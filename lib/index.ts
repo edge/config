@@ -2,6 +2,12 @@
 // Use of this source code is governed by a GNU GPL-style license
 // that can be found in the LICENSE.md file. All rights reserved.
 
+import Dotenv from 'dotenv'
+
+// Load environment variables from .env file if present
+Dotenv.config()
+
+// Provide helper methods to load environment variables
 export class Config {
   protected static getEnvArray(key: string, defaultValue: string[]): string[] {
     const value = process.env[key]
