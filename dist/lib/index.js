@@ -9,9 +9,10 @@ dotenv_1["default"].config();
 var Config = (function () {
     function Config() {
     }
-    Config.getEnvArray = function (key, defaultValue) {
+    Config.getEnvArray = function (key, defaultValue, delimiter) {
+        if (delimiter === void 0) { delimiter = ','; }
         var value = process.env[key];
-        return value ? value.split(',') : defaultValue;
+        return value ? value.split(delimiter) : defaultValue;
     };
     Config.getEnvBoolean = function (key, defaultValue) {
         var value = process.env[key];
