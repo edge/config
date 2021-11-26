@@ -12,9 +12,18 @@ Simple configuration management library
 
 ## Usage
 
-This library provides simple configuration management.
+This library provides simple configuration management, allowing defaults, type parsing, and automatic `.env` loading.
 
-TODO: Usage.
+```typescript
+import { Config } from '@edge/config'
+
+export class GlobalConfig extends Config {
+  public static httpPort = Config.getEnvNumber('HTTP_PORT', 80)
+  public static logLevel = Config.getEnvString('LOG_LEVEL', 'info')
+  public static peers = Config.getEnvArray('PEERS', ['peer1', 'peer2'])
+  public static someObject = Config.getEnvObject('SOME_OBJECT', { useful: true, reason: 'provides good utility' })
+}
+```
 
 ## License
 
