@@ -9,9 +9,9 @@ Dotenv.config()
 
 // Provide helper methods to load environment variables
 export class Config {
-  protected static getEnvArray(key: string, defaultValue: string[]): string[] {
+  protected static getEnvArray(key: string, defaultValue: string[], delimiter = ','): string[] {
     const value = process.env[key]
-    return value ? value.split(',') : defaultValue
+    return value ? value.split(delimiter) : defaultValue
   }
 
   protected static getEnvBoolean(key: string, defaultValue: boolean): boolean {
