@@ -6,7 +6,7 @@ Simple configuration management library
 
 [![npm version](https://img.shields.io/npm/v/@edge/config)](https://www.npmjs.com/package/@edge/config) [![npm downloads](https://img.shields.io/npm/dt/@edge/config)](https://www.npmjs.com/package/@edge/config) [![license](https://img.shields.io/npm/l/@edge/config)](LICENSE.md)
 
-- [config](#index-utils)
+- [config](#config)
   - [Usage](#usage)
   - [License](#license)
 
