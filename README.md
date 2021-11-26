@@ -17,10 +17,17 @@ This library provides simple configuration management, allowing defaults, type p
 ```typescript
 import { Config } from '@edge/config'
 
-export class GlobalConfig extends Config {
+export class GlobalConfig {
+  // Primitives
   static readonly httpPort = Config.getEnvNumber('HTTP_PORT', 80)
   static readonly logLevel = Config.getEnvString('LOG_LEVEL', 'info')
+  static readonly reportingEnabled = Config.getEnvBoolean('REPORTING_ENABLED', true)
+
+  // Arrays
   static readonly peers = Config.getEnvArray('PEERS', ['peer1', 'peer2'])
+  static readonly csvLists = Config.getEnvArray('CSV_LISTS', [], '|')
+
+  // Objects
   static readonly someObject = Config.getEnvObject('SOME_OBJECT', { useful: true, reason: 'provides good utility' })
 }
 ```
