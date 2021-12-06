@@ -29,6 +29,10 @@ export class GlobalConfig {
 
   // Objects
   static readonly someObject = Config.getEnvObject('SOME_OBJECT', { useful: true, reason: 'provides good utility' })
+
+  // Predicates
+  static readonly indexUrl = Config.ifEnvStringEquals('NETWORK', 'mainnet', 'index.xe.network', 'index.test.network')
+  static readonly indexUrl = Config.ifEnvBooleanIsTrue('IS_MAINNET', 'index.xe.network', 'index.test.network')
 }
 ```
 
