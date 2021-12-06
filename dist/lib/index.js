@@ -30,6 +30,14 @@ var Config = (function () {
         var value = process.env[key];
         return value ? value : defaultValue;
     };
+    Config.ifEnvStringEquals = function (key, value, trueValue, falseValue) {
+        var envValue = process.env[key];
+        return envValue === value ? trueValue : falseValue;
+    };
+    Config.ifEnvBooleanIsTrue = function (key, trueValue, falseValue) {
+        var envValue = process.env[key];
+        return envValue === 'true' ? trueValue : falseValue;
+    };
     return Config;
 }());
 exports.Config = Config;

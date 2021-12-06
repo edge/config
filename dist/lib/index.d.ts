@@ -4,4 +4,6 @@ export declare class Config {
     static getEnvNumber(key: string, defaultValue: number): number;
     static getEnvObject(key: string, defaultValue: Record<string, unknown>): Record<string, unknown>;
     static getEnvString(key: string, defaultValue: string): string;
+    static ifEnvStringEquals(key: string, value: string, trueValue: string, falseValue: string): string;
+    static ifEnvBooleanIsTrue(key: string, trueValue: string, falseValue: string): string;
 }

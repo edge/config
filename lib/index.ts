@@ -33,4 +33,14 @@ export class Config {
     const value = process.env[key]
     return value ? value : defaultValue
   }
+
+  static ifEnvStringEquals(key: string, value: string, trueValue: string, falseValue: string): string {
+    const envValue = process.env[key]
+    return envValue === value ? trueValue : falseValue
+  }
+
+  static ifEnvBooleanIsTrue(key: string, trueValue: string, falseValue: string): string {
+    const envValue = process.env[key]
+    return envValue === 'true' ? trueValue : falseValue
+  }
 }
