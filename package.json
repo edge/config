@@ -1,6 +1,6 @@
 {
   "name": "@edge/config",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Simple configuration management library",
   "main": "dist/lib/index.js",
   "author": "Edge Network <core@edge.network>",

@@ -6,4 +6,9 @@ export declare class Config {
     static getEnvString(key: string, defaultValue: string): string;
     static ifEnvStringEquals(key: string, value: string, trueValue: string, falseValue: string): string;
     static ifEnvBooleanIsTrue(key: string, trueValue: string, falseValue: string): string;
+    static getFileArray(filePath: string, defaultValue: string[], delimiter?: string): string[];
+    static getFileBoolean(filePath: string, defaultValue: boolean): boolean;
+    static getFileNumber(filePath: string, defaultValue: number): number;
+    static getFileObject(filePath: string, defaultValue: Record<string, unknown>): Record<string, unknown>;
+    static getFileString(filePath: string, defaultValue: string): string;
 }

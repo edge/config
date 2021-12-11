@@ -33,6 +33,14 @@ export class GlobalConfig {
   // Predicates
   static readonly indexUrl = Config.ifEnvStringEquals('NETWORK', 'mainnet', 'index.xe.network', 'index.test.network')
   static readonly indexUrl = Config.ifEnvBooleanIsTrue('IS_MAINNET', 'index.xe.network', 'index.test.network')
+
+  // Files
+  static readonly httpPort = Config.getFileNumber('config/port.txt', 80)
+  static readonly logLevel = Config.getFileString('config/loglevel.txt', 'info')
+  static readonly reportingEnabled = Config.getFileBoolean('config/reporting.txt', true)
+  static readonly peers = Config.getFileArray('config/peers.txt', ['peer1', 'peer2'])
+  static readonly csvLists = Config.getFileArray('config/list.txt', [], '|')
+  static readonly someObject = Config.getEnvObject('config/something.txt', { useful: true, reason: 'provides good utility' })
 }
 ```
 

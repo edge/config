@@ -3,6 +3,7 @@
 // that can be found in the LICENSE.md file. All rights reserved.
 
 import Dotenv from 'dotenv'
+import { readFileSync } from 'fs'
 
 // Load environment variables from .env file if present
 Dotenv.config()
@@ -42,5 +43,50 @@ export class Config {
   static ifEnvBooleanIsTrue(key: string, trueValue: string, falseValue: string): string {
     const envValue = process.env[key]
     return envValue === 'true' ? trueValue : falseValue
+  }
+
+  static getFileArray(filePath: string, defaultValue: string[], delimiter = ','): string[] {
+    try {
+      return readFileSync(filePath, 'utf8').split(delimiter)
+    }
+    catch (e) {
+      return defaultValue
+    }
+  }
+
+  static getFileBoolean(filePath: string, defaultValue: boolean): boolean {
+    try {
+      return readFileSync(filePath, 'utf8') === 'true'
+    }
+    catch (e) {
+      return defaultValue
+    }
+  }
+
+  static getFileNumber(filePath: string, defaultValue: number): number {
+    try {
+      return Number(readFileSync(filePath, 'utf8'))
+    }
+    catch (e) {
+      return defaultValue
+    }
+  }
+
+  static getFileObject(filePath: string, defaultValue: Record<string, unknown>): Record<string, unknown> {
+    try {
+      return JSON.parse(readFileSync(filePath, 'utf8'))
+    }
+    catch (e) {
+      return defaultValue
+    }
+  }
+
+  static getFileString(filePath: string, defaultValue: string): string {
+    try {
+      return readFileSync(filePath, 'utf8')
+    }
+    catch (e) {
+      return defaultValue
+    }
   }
 }

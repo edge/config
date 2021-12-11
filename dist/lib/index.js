@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 exports.Config = void 0;
 var dotenv_1 = __importDefault(require("dotenv"));
+var fs_1 = require("fs");
 dotenv_1["default"].config();
 var Config = (function () {
     function Config() {
@@ -37,6 +38,47 @@ var Config = (function () {
     Config.ifEnvBooleanIsTrue = function (key, trueValue, falseValue) {
         var envValue = process.env[key];
         return envValue === 'true' ? trueValue : falseValue;
+    };
+    Config.getFileArray = function (filePath, defaultValue, delimiter) {
+        if (delimiter === void 0) { delimiter = ','; }
+        try {
+            return (0, fs_1.readFileSync)(filePath, 'utf8').split(delimiter);
+        }
+        catch (e) {
+            return defaultValue;
+        }
+    };
+    Config.getFileBoolean = function (filePath, defaultValue) {
+        try {
+            return (0, fs_1.readFileSync)(filePath, 'utf8') === 'true';
+        }
+        catch (e) {
+            return defaultValue;
+        }
+    };
+    Config.getFileNumber = function (filePath, defaultValue) {
+        try {
+            return Number((0, fs_1.readFileSync)(filePath, 'utf8'));
+        }
+        catch (e) {
+            return defaultValue;
+        }
+    };
+    Config.getFileObject = function (filePath, defaultValue) {
+        try {
+            return JSON.parse((0, fs_1.readFileSync)(filePath, 'utf8'));
+        }
+        catch (e) {
+            return defaultValue;
+        }
+    };
+    Config.getFileString = function (filePath, defaultValue) {
+        try {
+            return (0, fs_1.readFileSync)(filePath, 'utf8');
+        }
+        catch (e) {
+            return defaultValue;
+        }
     };
     return Config;
 }());
