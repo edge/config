@@ -80,6 +80,37 @@ var Config = (function () {
             return defaultValue;
         }
     };
+    Config.requireEnvArray = function (key, delimiter) {
+        if (delimiter === void 0) { delimiter = ','; }
+        var value = process.env[key];
+        if (!value)
+            throw new Error("Missing required environment variable ".concat(key));
+        return value.split(delimiter);
+    };
+    Config.requireEnvBoolean = function (key) {
+        var value = process.env[key];
+        if (!value)
+            throw new Error("Missing required environment variable ".concat(key));
+        return value === 'true';
+    };
+    Config.requireEnvNumber = function (key) {
+        var value = process.env[key];
+        if (!value)
+            throw new Error("Missing required environment variable ".concat(key));
+        return Number(value);
+    };
+    Config.requireEnvObject = function (key) {
+        var value = process.env[key];
+        if (!value)
+            throw new Error("Missing required environment variable ".concat(key));
+        return JSON.parse(value);
+    };
+    Config.requireEnvString = function (key) {
+        var value = process.env[key];
+        if (!value)
+            throw new Error("Missing required environment variable ".concat(key));
+        return value;
+    };
     return Config;
 }());
 exports.Config = Config;

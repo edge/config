@@ -89,4 +89,34 @@ export class Config {
       return defaultValue
     }
   }
+
+  static requireEnvArray(key: string, delimiter = ','): string[] {
+    const value = process.env[key]
+    if (!value) throw new Error(`Missing required environment variable ${key}`)
+    return value.split(delimiter)
+  }
+
+  static requireEnvBoolean(key: string): boolean {
+    const value = process.env[key]
+    if (!value) throw new Error(`Missing required environment variable ${key}`)
+    return value === 'true'
+  }
+
+  static requireEnvNumber(key: string): number {
+    const value = process.env[key]
+    if (!value) throw new Error(`Missing required environment variable ${key}`)
+    return Number(value)
+  }
+
+  static requireEnvObject(key: string): Record<string, unknown> {
+    const value = process.env[key]
+    if (!value) throw new Error(`Missing required environment variable ${key}`)
+    return JSON.parse(value)
+  }
+
+  static requireEnvString(key: string): string {
+    const value = process.env[key]
+    if (!value) throw new Error(`Missing required environment variable ${key}`)
+    return value
+  }
 }
