@@ -11,4 +11,9 @@ export declare class Config {
     static getFileNumber(filePath: string, defaultValue: number): number;
     static getFileObject(filePath: string, defaultValue: Record<string, unknown>): Record<string, unknown>;
     static getFileString(filePath: string, defaultValue: string): string;
+    static requireEnvArray(key: string, delimiter?: string): string[];
+    static requireEnvBoolean(key: string): boolean;
+    static requireEnvNumber(key: string): number;
+    static requireEnvObject(key: string): Record<string, unknown>;
+    static requireEnvString(key: string): string;
 }

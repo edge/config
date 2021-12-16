@@ -134,5 +134,53 @@ describe('Config', () => {
     })
   })
 
+  describe('requireEnvArray', () => {
+    it('should return the value of the environment variable', () => {
+      expect(Config.requireEnvArray('TEST_ENV_ARRAY', ',')).to.deep.equal(['1', '2', '3'])
+    })
 
+    it('should throw an error if the environment variable is not set', () => {
+      expect(() => Config.requireEnvArray('TEST_ENV_UNSET', ',')).to.throw(Error)
+    })
+  })
+
+  describe('requireEnvBoolean', () => {
+    it('should return the value of the environment variable', () => {
+      expect(Config.requireEnvBoolean('TEST_ENV_BOOLEAN')).to.equal(true)
+    })
+
+    it('should throw an error if the environment variable is not set', () => {
+      expect(() => Config.requireEnvBoolean('TEST_ENV_UNSET')).to.throw(Error)
+    })
+  })
+
+  describe('requireEnvNumber', () => {
+    it('should return the value of the environment variable', () => {
+      expect(Config.requireEnvNumber('TEST_ENV_NUMBER')).to.equal(1)
+    })
+
+    it('should throw an error if the environment variable is not set', () => {
+      expect(() => Config.requireEnvNumber('TEST_ENV_UNSET')).to.throw(Error)
+    })
+  })
+
+  describe('requireEnvObject', () => {
+    it('should return the value of the environment variable', () => {
+      expect(Config.requireEnvObject('TEST_ENV_OBJECT')).to.deep.equal({ a: 1, b: 2 })
+    })
+
+    it('should throw an error if the environment variable is not set', () => {
+      expect(() => Config.requireEnvObject('TEST_ENV_UNSET')).to.throw(Error)
+    })
+  })
+
+  describe('requireEnvString', () => {
+    it('should return the value of the environment variable', () => {
+      expect(Config.requireEnvString('TEST_ENV_STRING')).to.equal('test')
+    })
+
+    it('should throw an error if the environment variable is not set', () => {
+      expect(() => Config.requireEnvString('TEST_ENV_UNSET')).to.throw(Error)
+    })
+  })
 })

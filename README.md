@@ -41,6 +41,14 @@ export class GlobalConfig {
   static readonly peers = Config.getFileArray('config/peers.txt', ['peer1', 'peer2'])
   static readonly csvLists = Config.getFileArray('config/list.txt', [], '|')
   static readonly someObject = Config.getEnvObject('config/something.txt', { useful: true, reason: 'provides good utility' })
+
+  // Required env vars
+  // If these aren't set, an error will be thrown
+  static readonly requiredArray = Config.getEnvArray('REQUIRED_ARRAY')
+  static readonly requiredBoolean = Config.getEnvBoolean('REQUIRED_BOOLEAN')
+  static readonly requiredNumber = Config.getEnvNumber('REQUIRED_NUMBER')
+  static readonly requiredObject = Config.getEnvObject('REQUIRED_OBJECT')
+  static readonly requiredString = Config.getEnvString('REQUIRED_STRING')
 }
 ```
 
